@@ -3,7 +3,7 @@ CREATE DATABASE `hotel-chain`;
 use `hotel-chain`;
 CREATE TABLE Hotel
 (
-  ID INT NOT NULL,
+  ID INT NOT NULL AUTO_INCREMENT,
   Location VARCHAR(64),
   Name VARCHAR(64) NOT NULL,
   Rating INT,
@@ -12,7 +12,7 @@ CREATE TABLE Hotel
 
 CREATE TABLE Reservee
 (
-  ID INT NOT NULL,
+  ID INT NOT NULL AUTO_INCREMENT,
   Name VARCHAR(64) NOT NULL,
   PRIMARY KEY (ID)
 );
@@ -20,7 +20,7 @@ CREATE TABLE Reservee
 
 CREATE TABLE Reservation
 (
-  Reservation_ID INT NOT NULL,
+  Reservation_ID INT NOT NULL AUTO_INCREMENT,
   Board_type CHAR(20) DEFAULT 'Full board',
   Start_date DATE NOT NULL,
   Duration INT NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE Reservation
 
 CREATE TABLE Booking_Agency
 (
-  Agency_ID INT NOT NULL,
+  Agency_ID INT NOT NULL AUTO_INCREMENT,
   Location VARCHAR(64),
   Discount FLOAT DEFAULT 0,
   Reservee_ID INT,
@@ -47,7 +47,7 @@ CREATE TABLE Booking_Agency
 
 CREATE TABLE Room
 (
-  Room_ID INT NOT NULL,
+  Room_ID INT NOT NULL AUTO_INCREMENT,
   Room_number INT,
   Price INT,
   Hotel_ID INT NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE Room
 
 CREATE TABLE Activities
 (
-  Activity_ID INT NOT NULL,
+  Activity_ID INT NOT NULL AUTO_INCREMENT,
   Date DATE NOT NULL,
   Price INT NOT NULL,
   PRIMARY KEY (Activity_ID)
@@ -115,6 +115,17 @@ CREATE TABLE Participates_in
     ON UPDATE CASCADE
 );
 
+CREATE TABLE Department
+(
+  Department_ID INT NOT NULL AUTO_INCREMENT,
+  Name VARCHAR(64) NOT NULL,
+  Hotel_ID INT NOT NULL,
+  PRIMARY KEY (Department_ID),
+  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(ID)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
 CREATE TABLE Employee
 (
   ESSN INT NOT NULL,
@@ -131,25 +142,14 @@ CREATE TABLE Employee
     ON UPDATE CASCADE
 );
 
-CREATE TABLE Department
-(
-  Department_ID INT NOT NULL,
-  Name VARCHAR(64) NOT NULL,
-  Hotel_ID INT NOT NULL,
-  PRIMARY KEY (Department_ID),
-  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID)
-	ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
-
 CREATE TABLE Gym
 (
-  Facility_ID INT NOT NULL,
+  Facility_ID INT NOT NULL AUTO_INCREMENT,
   Hotel_ID INT NOT NULL,
   Name VARCHAR(64),
   Working_hours INT,
   PRIMARY KEY (Facility_ID),
-  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID)
+  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(ID)
 	ON DELETE CASCADE
     ON UPDATE CASCADE
 );
@@ -166,14 +166,14 @@ CREATE TABLE Equipment_name
 
 CREATE TABLE Restaurant
 (
-  Facility_ID INT NOT NULL,
+  Facility_ID INT NOT NULL AUTO_INCREMENT,
   Hotel_ID INT NOT NULL,
   Name VARCHAR(64),
   Rating INT,
   Price_range VARCHAR(64) DEFAULT 'Normal',
   Food_type VARCHAR(64),
   PRIMARY KEY (Facility_ID),
-  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID)
+  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(ID)
 	ON DELETE CASCADE
     ON UPDATE CASCADE
 );
