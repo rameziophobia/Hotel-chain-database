@@ -114,3 +114,67 @@ CREATE TABLE Participates_in
 	ON DELETE RESTRICT
     ON UPDATE CASCADE
 );
+
+CREATE TABLE Employee
+(
+  ESSN INT NOT NULL,
+  Name VARCHAR(64) NOT NULL,
+  Manager_SSN INT,
+  Department_ID INT NOT NULL,
+  Salary INT NOT NULL,
+  PRIMARY KEY (ESSN),
+  FOREIGN KEY (Manager_SSN) REFERENCES Employee(ESSN)
+	ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  FOREIGN KEY (Department_ID) REFERENCES Department(Department_ID)
+	ON DELETE RESTRICT
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE Department
+(
+  Department_ID INT NOT NULL,
+  Name VARCHAR(64) NOT NULL,
+  Hotel_ID INT NOT NULL,
+  PRIMARY KEY (Department_ID),
+  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE Gym
+(
+  Facility_ID INT NOT NULL,
+  Hotel_ID INT NOT NULL,
+  Name VARCHAR(64),
+  Working_hours INT,
+  PRIMARY KEY (Facility_ID),
+  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE Equipment_name
+(
+  F_ID INT NOT NULL,
+  Equipment_Name VARCHAR(64) NOT NULL,
+  PRIMARY KEY (F_ID , Equipment_Name),
+  FOREIGN KEY (F_ID) REFERENCES Gym(Facility_ID)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE Restaurant
+(
+  Facility_ID INT NOT NULL,
+  Hotel_ID INT NOT NULL,
+  Name VARCHAR(64),
+  Rating INT,
+  Price_range VARCHAR(64) DEFAULT 'Normal',
+  Food_type VARCHAR(64),
+  PRIMARY KEY (Facility_ID),
+  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
