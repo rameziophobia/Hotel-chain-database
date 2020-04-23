@@ -1,0 +1,14 @@
+DELETE FROM Guest
+WHERE  SSN = "653298653";
+
+DELETE FROM Reservation
+WHERE  Reservee_ID = 9;
+
+DELETE FROM Hotel
+WHERE  Rating < 3;
+
+DELETE FROM Activities
+WHERE  Date < CURDATE();
+
+DELETE FROM ROOM
+WHERE  Available = 0;
