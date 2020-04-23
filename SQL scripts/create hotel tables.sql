@@ -10,14 +10,6 @@ CREATE TABLE Hotel
   PRIMARY KEY (ID)
 );
 
-CREATE TABLE Reservee
-(
-  ID INT NOT NULL AUTO_INCREMENT,
-  Name VARCHAR(64) NOT NULL,
-  PRIMARY KEY (ID)
-);
-
-
 CREATE TABLE Reservation
 (
   Reservation_ID INT NOT NULL AUTO_INCREMENT,
@@ -36,13 +28,11 @@ CREATE TABLE Reservation
 CREATE TABLE Booking_Agency
 (
   Agency_ID INT NOT NULL AUTO_INCREMENT,
+  Name VARCHAR(64),
   Location VARCHAR(64),
   Discount FLOAT DEFAULT 0,
   Reservee_ID INT,
-  PRIMARY KEY (Agency_ID),
-  FOREIGN KEY (Reservee_ID) REFERENCES Reservee(ID)
-	ON DELETE RESTRICT
-    ON UPDATE CASCADE
+  PRIMARY KEY (Agency_ID)
 );
 
 CREATE TABLE Room
@@ -51,7 +41,7 @@ CREATE TABLE Room
   Room_number INT,
   Price INT,
   Hotel_ID INT NOT NULL,
-  Reservation_ID INT,
+  Reservation_ID INT DEFAULT NULL,
   View VARCHAR(20),
   Available INT,
   Room_Type CHAR(20),
@@ -68,6 +58,7 @@ CREATE TABLE Room
 CREATE TABLE Activities
 (
   Activity_ID INT NOT NULL AUTO_INCREMENT,
+  Name VARCHAR(32),
   Date DATE NOT NULL,
   Price INT NOT NULL,
   PRIMARY KEY (Activity_ID)
@@ -89,14 +80,11 @@ CREATE TABLE Offers
 CREATE TABLE Guest
 (
   SSN INT NOT NULL,
-  Reservee_ID INT,
+  Reservee_ID INT DEFAULT NULL,
   Gender CHAR(20),
   Date_of_birth DATE NOT NULL,
   Reservation_ID INT NOT NULL,
   PRIMARY KEY (SSN),
-  FOREIGN KEY (Reservee_ID) REFERENCES Reservee(ID)
-	ON DELETE RESTRICT
-    ON UPDATE CASCADE,
   FOREIGN KEY (Reservation_ID) REFERENCES Reservation(Reservation_ID)
 	ON DELETE CASCADE
     ON UPDATE CASCADE
@@ -147,7 +135,7 @@ CREATE TABLE Gym
   Facility_ID INT NOT NULL AUTO_INCREMENT,
   Hotel_ID INT NOT NULL,
   Name VARCHAR(64),
-  Working_hours INT,
+  Working_hours varchar(16),
   PRIMARY KEY (Facility_ID),
   FOREIGN KEY (Hotel_ID) REFERENCES Hotel(ID)
 	ON DELETE CASCADE
