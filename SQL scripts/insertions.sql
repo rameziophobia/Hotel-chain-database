@@ -1,7 +1,8 @@
 INSERT INTO Hotel
-	VALUES (1, "Fifth settlement", "Hilton", 5),
+	VALUES (1, "Fifth settlement", "Hilton", 3),
 		   (2, "Sixth settlement", "Fermont", 4),
-           (DEFAULT, "Seventh settlement", "Plaza", 5);
+           (DEFAULT, "Seventh settlement", "Plaza", 3),
+		   (DEFAULT, "Eighth settlement", "New Soul", 3);
 
 INSERT INTO Reservee
 	VALUES (11);
@@ -74,7 +75,7 @@ INSERT INTO `hotel-chain`.`gym` (`Facility_ID`, `Hotel_ID`, `Name`, `Working_hou
 INSERT INTO `hotel-chain`.`gym` (`Facility_ID`, `Hotel_ID`, `Name`, `Working_hours`) VALUES ('5', '2', 'gym5', '8 am - 4 am');
 INSERT INTO `hotel-chain`.`gym` (`Facility_ID`, `Hotel_ID`, `Name`, `Working_hours`) VALUES ('6', '2', 'gym6', '8 am - 4 am');
     
-INSERT INTO `hotel-chain`.`restaurant` (`Facility_ID`, `Hotel_ID`, `Name`, `Rating`, `Price_range`, `Food_type`) VALUES ('1', '1', 'rest1', '5', '$$', 'chinese');
+INSERT INTO `hotel-chain`.`restaurant` (`Facility_ID`, `Hotel_ID`, `Name`, `Rating`, `Price_range`, `Food_type`) VALUES ('1', '2', 'Panda', '5', '$$', 'chinese');
 INSERT INTO `hotel-chain`.`restaurant` (`Facility_ID`, `Hotel_ID`, `Name`, `Rating`, `Price_range`, `Food_type`) VALUES ('2', '2', 'sausagespot', '5', '$$', 'italian');
 INSERT INTO `hotel-chain`.`restaurant` (`Facility_ID`, `Hotel_ID`, `Name`, `Rating`, `Price_range`, `Food_type`) VALUES ('3', '3', 'burger joint', '4', '$$$', 'burger');
 INSERT INTO `hotel-chain`.`restaurant` (`Facility_ID`, `Hotel_ID`, `Name`, `Rating`, `Price_range`, `Food_type`) VALUES ('4', '1', 'cheese lovers', '2', '$$$', 'pizza');

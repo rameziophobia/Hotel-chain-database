@@ -32,17 +32,23 @@ UPDATE Employee e
 SET e.Manager_SSN =  @new_mngr
 WHERE e.Manager_SSN = @old_mngr;
 
--- increment the rating of hotels which have 2 or more facilities by 1
--- TODO that implementation doesnt work .. mksl azbot-ha
-UPDATE Hotel
-SET Hotel.Rating = Hotel.Rating + 1
-WHERE Hotel.Rating < 5 AND
-	Hotel.ID IN (
-	SELECT *
-	FROM Hotel h
+-- increment by one the rating of hotels having
+-- three or more facilities of a specefic type
+UPDATE Hotel h
+SET h.Rating = h.Rating + 1
+WHERE h.Rating < 5 AND
+	h.ID IN (
+	SELECT h1.id
+	FROM (SELECT Hotel.id FROM Hotel) AS h1
 	JOIN Gym g
-		   ON h.ID = g.Hotel_ID
+		   ON h1.ID = g.Hotel_ID
+	GROUP BY h1.ID
+	HAVING COUNT(*) > 2
+	UNION
+	SELECT h1.id
+	FROM (SELECT Hotel.id FROM Hotel) AS h1
 	JOIN Restaurant r
-		   ON h.ID = r.Hotel_ID
-	HAVING COUNT(*) > 1
-	);
+		   ON h1.ID = r.Hotel_ID
+	GROUP BY h1.ID
+	HAVING COUNT(*) > 2
+);
