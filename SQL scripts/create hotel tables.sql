@@ -131,12 +131,12 @@ CREATE TABLE Employee
 (
   ESSN INT NOT NULL,
   Name VARCHAR(64) NOT NULL,
-  Manages_ESSN INT,
+  Management_ESSN INT,
   Department_ID INT NOT NULL,
   Hotel_ID INT NOT NULL,
   Salary INT NOT NULL,
   PRIMARY KEY (ESSN),
-  FOREIGN KEY (Manager_SSN) REFERENCES Employee(ESSN)
+  FOREIGN KEY (Management_SSN) REFERENCES Employee(ESSN)
 	ON DELETE SET NULL
     ON UPDATE CASCADE,
   FOREIGN KEY (Department_ID) REFERENCES Department(Department_ID)
