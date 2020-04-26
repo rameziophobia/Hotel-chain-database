@@ -8,13 +8,15 @@ INSERT INTO Reservee
 	VALUES (11);
 
 INSERT INTO Reservation
-	VALUES  (3, "Full board", "2020-12-30", 7, 3000, 0, 11);
+	VALUES  (3, "Full board", "2020-12-30", 7, 3000, 0, 11,10);
     
 INSERT INTO Room
-	VALUES (5, 237, 6000, 1, 3, "swimming pool", 0, "Suite"),
-		   (DEFAULT, 137, 6500, 2, DEFAULT, "view2", 1, "double"),
-		   (DEFAULT, 337, 6500, 1, DEFAULT, "view3", 1, "double"),
-		   (DEFAULT, 437, 6000, 1, DEFAULT, "view2", 1, "double");
+	VALUES (5, 237, 6000, 1,"swimming pool", 0, "Suite"),
+		   (6, 137, 6500, DEFAULT, "view2", 1, "double"),
+		   (7, 337, 6500,  DEFAULT, "view3", 1, "double"),
+		   (8, 437, 6000, DEFAULT, "view2", 1, "double"),
+		   (9, 437, 6000, DEFAULT, "view2", 1, "double"),
+		   (10, 437, 6000, DEFAULT, "view2", 1, "double");
 
 INSERT INTO Reservee()
 	VALUES ();
@@ -24,12 +26,12 @@ INSERT INTO Booking_Agency(Discount, Reservee_ID)
 	VALUES (0.4, @last_reservee_id);
 
 INSERT INTO Reservation(Board_type, Start_date, Duration, 
-						Paid_amount, children_number, Reservee_ID)
-	VALUES  ("Half board", "2020-10-13", 5, DEFAULT, DEFAULT, @last_reservee_id),
-			("Full board", "2020-6-30", 5, 5000, DEFAULT, @last_reservee_id),
-			("Half board", "2020-7-4", 7, 3000, DEFAULT, @last_reservee_id),
-			("Full board", "2019-8-6", 7, 3000, 2, @last_reservee_id),
-			("Half board", "2019-12-30", 7, 3000, 1, @last_reservee_id);
+						Paid_amount, children_number, Reservee_ID,Room_ID)
+	VALUES  ("Half board", "2020-10-13", 5, DEFAULT, DEFAULT, @last_reservee_id,5),
+			("Full board", "2020-6-30", 5, 5000, DEFAULT, @last_reservee_id,6),
+			("Half board", "2020-7-4", 7, 3000, DEFAULT, @last_reservee_id,7),
+			("Full board", "2019-8-6", 7, 3000, 2, @last_reservee_id,8),
+			("Half board", "2019-12-30", 7, 3000, 1, @last_reservee_id,9);
 
 INSERT INTO Guest
 	VALUES ("653298653", "JOHN WICK", 11, "Male", "1999-12-30", 3);
@@ -82,15 +84,15 @@ INSERT INTO `hotel-chain`.`restaurant` (`Facility_ID`, `Hotel_ID`, `Name`, `Rati
 INSERT INTO `hotel-chain`.`restaurant` (`Facility_ID`, `Hotel_ID`, `Name`, `Rating`, `Price_range`, `Food_type`) VALUES ('5', '2', 'abdo natana', '1', '$', 'masri');
 INSERT INTO `hotel-chain`.`restaurant` (`Facility_ID`, `Hotel_ID`, `Name`, `Rating`, `Price_range`, `Food_type`) VALUES ('6', '3', 'zozo talawoth', '5', '$', 'masri');
 
-INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment_Name`) VALUES ('1', 'Jump rope ');
-INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment_Name`) VALUES ('2', 'Squat rack ');
-INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment_Name`) VALUES ('1', 'Push up bars ');
-INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment_Name`) VALUES ('1', 'Punching bag ');
-INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment_Name`) VALUES ('3', 'Chest press machine');
-INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment_Name`) VALUES ('3', 'Punching bag ');
-INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment_Name`) VALUES ('4', 'Pull up bar ');
-INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment_Name`) VALUES ('5', 'Leg press machine');
-INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment_Name`) VALUES ('2', 'Chest press machine');
+INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment`) VALUES ('1', 'Jump rope ');
+INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment`) VALUES ('2', 'Squat rack ');
+INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment`) VALUES ('1', 'Push up bars ');
+INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment`) VALUES ('1', 'Punching bag ');
+INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment`) VALUES ('3', 'Chest press machine');
+INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment`) VALUES ('3', 'Punching bag ');
+INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment`) VALUES ('4', 'Pull up bar ');
+INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment`) VALUES ('5', 'Leg press machine');
+INSERT INTO `hotel-chain`.`equipment_name` (`F_ID`, `Equipment`) VALUES ('2', 'Chest press machine');
 
 INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('1', 'Maintenance', '1');
 INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('2', 'dep2', '2');
@@ -99,10 +101,10 @@ INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VAL
 INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('5', 'dep6', '1');
 
 INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Department_ID`, `Salary`) VALUES ('1254', 'David', '1', '5000');
-INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Manager_SSN`, `Department_ID`, `Salary`) VALUES ('7984', 'Khaled', '1254', '2', '5000');
-INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Manager_SSN`, `Department_ID`, `Salary`) VALUES ('3759', 'Roshdy', '1254', '1', '5000');
-INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Manager_SSN`, `Department_ID`, `Salary`) VALUES ('6561', 'Abaza', '1254', '1', '5000');
-INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Manager_SSN`, `Department_ID`, `Salary`) VALUES ('1356', 'Katkoot', '1254', '3', '5000');
+INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`) VALUES ('7984', 'Khaled', '1254', '2', '5000');
+INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`) VALUES ('3759', 'Roshdy', '1254', '1', '5000');
+INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`) VALUES ('6561', 'Abaza', '1254', '1', '5000');
+INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`) VALUES ('1356', 'Katkoot', '1254', '3', '5000');
 INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Department_ID`, `Salary`) VALUES ('5641', 'Jacket', '4', '5000');
-INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Manager_SSN`, `Department_ID`, `Salary`) VALUES ('1532', 'Amees', '5641', '2', '5000');
+INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`) VALUES ('1532', 'Amees', '5641', '2', '5000');
 
