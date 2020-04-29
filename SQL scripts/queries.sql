@@ -1,4 +1,4 @@
--- List the guests participating in activities in the next week
+-- List the guests participating in activities in the next week sorted by activity name
 SELECT g.Name as guest, a.Name as activity, a.Price, a.Date
 FROM Activities a
 JOIN Participates_in part
@@ -6,7 +6,8 @@ JOIN Participates_in part
 JOIN Guest g
        ON g.SSN = part.guest_SSN
 WHERE
-       a.Date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 1 WEEK);
+       a.Date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 1 WEEK)
+ORDER BY  a.Name;
 
 -- List all the reservations in the next 3 months
 SELECT *
@@ -16,21 +17,23 @@ WHERE Reservation.Start_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 3 MONTH)
 -- List all facilities for each hotel .. el 2 ma3 ba3d fe 
 -- table wa7ed manfe3sh 3ashan fihom info mo5talifa
 
--- List all gyms with their equipment for all hotels
+-- List all hotels showing their gyms and equipment sorted by gym name
 SELECT h.Name AS 'hotel name', g.Name AS 'gym name', 
-	   g.Working_hours, eq.Equipment_name
+	   g.Working_hours, eq.Equipment
 FROM Hotel h
-LEFT JOIN Gym g
+JOIN Gym g
 	ON h.ID = g.Hotel_ID
-LEFT JOIN Equipment_name eq
-	ON eq.F_ID = g.Facility_ID;
+LEFT JOIN Equipment eq
+	ON eq.F_ID = g.Facility_ID
+ORDER BY g.Name;
        
--- List all restaurants for each hotel 
+-- List all hotels showing each of their restaurants sorted by price
 SELECT  h.Name AS 'hotel name', r.Name AS 'restaurant name', 
 		r.Food_type, r.Price_range
 FROM Hotel h
 LEFT JOIN Restaurant r
-       ON h.ID = r.Hotel_ID;
+       ON h.ID = r.Hotel_ID
+ORDER BY r.Price_range;
 
 -- List all the available rooms with the discounted price for agencies
 
@@ -48,7 +51,6 @@ FROM   Employee, Department
 WHERE  Employee.Department_ID = Department.Department_ID AND   
        Department.Name="Maintenance";
 
--- suggestion: idk ana kaselt afham el query bte3ml eh bas i deleted reservee ... so xD
 SELECT Name
 FROM   Reservee, Reservation, Room
 WHERE  ID = Reservee_ID AND 
