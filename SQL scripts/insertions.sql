@@ -97,14 +97,16 @@ INSERT INTO `hotel-chain`.`equipment` (`F_ID`, `Equipment`) VALUES ('2', 'Chest 
 
 INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('1', 'Maintenance', '1');
 INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('2', 'dep2', '2');
+INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('3', 'dep3', '2');
 INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('3', 'dep3', '3');
-INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('4', 'Maintenance', '2');
-INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('5', 'dep6', '1');
+INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('1', 'Maintenance', '2');
+INSERT INTO `hotel-chain`.`department` (`Department_ID`, `Name`, `Hotel_ID`) VALUES ('4', 'dep4', '3');
 
 INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('1254', 'David', '1', '5000','1');
 INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('7984', 'Khaled', '1254', '2', '5000','2');
-INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('3759', 'Roshdy', '1254', '1', '5000','3');
+INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('3759', 'Roshdy', '1254', '1', '5000','2');
 INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('6561', 'Abaza', '1254', '1', '5000','1');
 INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('1356', 'Katkoot', '1254', '3', '5000','2');
-INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('5641', 'Jacket', '4', '5000','2');
-INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('1532', 'Amees', '5641', '2', '5000','3');
+INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('5641', 'Jacket', '1', '5000','2');
+INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('1532', 'Amees', '5641', '3', '5000','3');
+INSERT INTO `hotel-chain`.`employee` (`ESSN`, `Name`, `Management_ESSN`, `Department_ID`, `Salary`,`Hotel_ID`) VALUES ('1523', 'Abo Leela', '5641', '4', '5000','3');
