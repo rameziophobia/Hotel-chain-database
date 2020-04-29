@@ -15,7 +15,20 @@ CREATE TABLE Reservee
 	ID INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(ID)
 );
-
+CREATE TABLE Room
+(
+  Room_ID INT NOT NULL AUTO_INCREMENT,
+  Room_number INT,
+  Price INT,
+  Hotel_ID INT NOT NULL,
+  View VARCHAR(20),
+  Available INT,
+  Room_Type CHAR(20),
+  PRIMARY KEY (Room_ID),
+  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(ID)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
 CREATE TABLE Reservation
 (
   Reservation_ID INT NOT NULL AUTO_INCREMENT,
@@ -48,20 +61,7 @@ CREATE TABLE Booking_Agency
     ON UPDATE CASCADE
 );
 
-CREATE TABLE Room
-(
-  Room_ID INT NOT NULL AUTO_INCREMENT,
-  Room_number INT,
-  Price INT,
-  Hotel_ID INT NOT NULL,
-  View VARCHAR(20),
-  Available INT,
-  Room_Type CHAR(20),
-  PRIMARY KEY (Room_ID),
-  FOREIGN KEY (Hotel_ID) REFERENCES Hotel(ID)
-	ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
+
 
 
 CREATE TABLE Activities
@@ -136,7 +136,7 @@ CREATE TABLE Employee
   Hotel_ID INT NOT NULL,
   Salary INT NOT NULL,
   PRIMARY KEY (ESSN),
-  FOREIGN KEY (Management_SSN) REFERENCES Employee(ESSN)
+  FOREIGN KEY (Management_ESSN) REFERENCES Employee(ESSN)
 	ON DELETE SET NULL
     ON UPDATE CASCADE,
   FOREIGN KEY (Department_ID) REFERENCES Department(Department_ID)
