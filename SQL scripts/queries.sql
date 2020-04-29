@@ -43,9 +43,4 @@ SELECT price, view, Name
 FROM   Room, Hotel
 WHERE  Available=1 AND Room_Type="double" AND Hotel_ID=ID;
 
--- List all Employees working in the Maintenance Department
--- suggestion: add managers
-SELECT ESSN, Salary
-FROM   Employee, Department
-WHERE  Employee.Department_ID = Department.Department_ID AND   
-       Department.Name="Maintenance";
+
