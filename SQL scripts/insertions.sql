@@ -41,7 +41,7 @@ INSERT INTO Guest(SSN , Name, Gender,Date_of_birth, Reservation_ID)
 	VALUES  ("123456789", "Hla", "Male", "1997-12-30", 1),
 			("546516515", "Ahmed", "Male", "1997-12-30", 4),
 			("123452169", "Mansour", "Male", "1996-1-30", 4),
-			("123151645", "Ramez", "Male", "1995-1-20", 5),
+			("123151645", "Ramez", "Female", "1995-1-20", 5),
 			("123449841", "Noshy", "Male", "1997-1-20", 2),
 			("763456789", "Weissa", "Female", "1992-12-20", 4),
 			("125166789", "Samer", "Male", "1989-12-2", 3),
