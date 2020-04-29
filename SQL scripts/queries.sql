@@ -1,4 +1,3 @@
--- List the guests participating in activities in the next week sorted by activity name
 SELECT g.Name as guest, a.Name as activity, a.Price, a.Date
 FROM Activities a
 JOIN Participates_in part
@@ -42,7 +41,7 @@ ORDER BY r.Price_range;
 -- suggestion: name bta3 min ?, nzawid 7war el dates??
 SELECT price, view, Name
 FROM   Room, Hotel
-WHERE  Available=1 AND Room Type="double" AND Hotel_ID=ID;
+WHERE  Available=1 AND Room_Type="double" AND Hotel_ID=ID;
 
 -- List all Employees working in the Maintenance Department
 -- suggestion: add managers
@@ -50,9 +49,3 @@ SELECT ESSN, Salary
 FROM   Employee, Department
 WHERE  Employee.Department_ID = Department.Department_ID AND   
        Department.Name="Maintenance";
-
-SELECT Name
-FROM   Reservee, Reservation, Room
-WHERE  ID = Reservee_ID AND 
-       Room.Reservation_ID=Reservation.Reservation_ID
-       AND Hotel_ID=1;
